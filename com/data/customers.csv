@@ -1,25 +1,6 @@
-email,firstname,lastname,balance
-Jean.author@gmail.com,jean,author,10000
-David.allen@gmail.com,david,allen,6000
-Scott.young@gmail.com, scott,young,7000
-Jean.author@gmail.com,jean,author,10000
-David.allen@gmail.com,david,allen,6000
-Scott.young@gmail.com, scott,young,7000
-Jean.author@gmail.com,jean,author,10000
-David.allen@gmail.com,david,allen,6000
-Scott.young@gmail.com, scott,young,7000
-Jean.author@gmail.com,jean,author,10000
-David.allen@gmail.com,david,allen,6000
-Scott.young@gmail.com, scott,young,7000
-Jean.author@gmail.com,jean,author,10000
-David.allen@gmail.com,david,allen,6000
-Scott.young@gmail.com, scott,young,7000
-Jean.author@gmail.com,jean,author,10000
-David.allen@gmail.com,david,allen,6000
-Scott.young@gmail.com, scott,young,7000
-Jean.author@gmail.com,jean,author,10000
-David.allen@gmail.com,david,allen,6000
-Scott.young@gmail.com, scott,young,7000
-Jean.author@gmail.com,jean,author,10000
-David.allen@gmail.com,david,allen,6000
-Scott.young@gmail.com, scott,young,7000
+email,firstname,lastname,balance,password
+Jean.author@gmail.com,jean,author,10000,jean@123
+David.allen@gmail.com,david,allen,6000,david@123
+Scott.young@gmail.com, scott,young,7000,scott@123
+john@gmail.com,john,doe,5000,john@123
+sui@gmail.com,sui,beauty,5000,sui@123
