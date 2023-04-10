@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
+import models.Customer;
 import models.Transaction;
 
 public class DataBase {
@@ -51,10 +52,10 @@ public class DataBase {
         System.out.println(" -- -- -- -- -- ");
     }
 
-    public static List<String> getCustomers() throws Exception {
+    public static List<Customer> getCustomers() throws Exception {
         String line = "";
         String splitBy = ",";
-        List<String> customers = new ArrayList<String>();
+        List<Customer> customers = new ArrayList<Customer>();
         try {
             // parsing a CSV file into BufferedReader class constructor
             BufferedReader br = new BufferedReader(
@@ -63,13 +64,50 @@ public class DataBase {
             {
 
                 List<String> oneCustomer = Arrays.asList(line.split(splitBy)); // use comma as separator
-                customers.add(oneCustomer.get(0));
+                Customer customer = new Customer(oneCustomer.get(0), oneCustomer.get(1), oneCustomer.get(2),
+                        oneCustomer.get(3), oneCustomer.get(4));
+                customers.add(customer);
 
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("CustmersList Size : " + customers.size());
         return customers;
+    }
+
+    // get customers and writer to database
+    public static void setCustomers(Customer currentCustomer) {
+        try {
+            List<Customer> customersList = DataBase.getCustomers();
+            // udpate List
+            for (int i = 0; i < customersList.size(); i++) {
+                if (currentCustomer.getEmail().equals(customersList.get(i).getEmail())) {
+                    customersList.set(i, currentCustomer);
+                }
+            }
+            // empty file
+            FileWriter emptyWriter = new FileWriter("/Users/ericsei/projects/jump-plus/com/data/customers.csv", false);
+            emptyWriter.append("");
+            emptyWriter.flush();
+            emptyWriter.close();
+
+            // Update list to file
+            FileWriter csvWriter = new FileWriter("/Users/ericsei/projects/jump-plus/com/data/customers.csv", true);
+
+            for (Customer customer : customersList) {
+                List<String> rowData = Arrays.asList(customer.getEmail(), customer.getFirstName(),
+                        customer.getLastName(), customer.getBalance(), customer.getPassword());
+                csvWriter.append(String.join(",", rowData));
+                csvWriter.append("\n");
+            }
+            csvWriter.flush();
+            csvWriter.close();
+
+        } catch (Exception e) {
+            System.out.println("Error out while invokingsetCustomer :" + e);
+        }
+
     }
 
     // sign up process

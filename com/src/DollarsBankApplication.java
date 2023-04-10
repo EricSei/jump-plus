@@ -1,19 +1,12 @@
-import java.io.File;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
-
-import javax.xml.crypto.Data;
-
 import controllers.Auth;
-import models.Account;
 import services.DataBase;
+import services.Menu;
 
 public class DollarsBankApplication {
   public static void main(String[] args) throws Exception {
 
-    System.out.println("Welcom From Bank Of America");
+    System.out.println("Welcom From Bank.");
 
     DataBase bankDatabase = new DataBase();
     // bankDatabase.writeCustomer();
@@ -24,28 +17,27 @@ public class DollarsBankApplication {
 
     // DataBase.writeTransaction("eric@gmail.com");
 
-    Auth auth = new Auth();
-
-    if (Auth.isAuth("sui@gmail.com")) {
-      System.out.print("User is authenticated.");
-    } else {
-      System.out.print("User is not found. Create a new account. Bye");
-    }
-
-    // ---------------
-
-    // Account bankOfAmerica = new Account();
-    // DataBase dataBase = new DataBase();
-
-    // HashMap<String, ArrayList<String>> employeeAccountHistory = new HashMap<>();
-
-    // ArrayList<String> transactions = new ArrayList<String>();
-    // transactions.add("transaction 0");
-
-    // employeeAccountHistory.put("transactions", transactions);
-
-    // dataBase.data.put("John", employeeAccountHistory);
-
-    // System.out.print(employeeAccountHistory.get("transactions").get(0));
+    boolean isQuit = false;
+    do {
+      Menu.mainDisplay();
+      Scanner sc = new Scanner(System.in);
+      System.out.print("Select An Option by choosing a number: ");
+      String expression = sc.nextLine(); // 1: login, 2: Sign Up, 3: Menu, 4: Quit
+      switch (expression) {
+        case "1":
+          Auth.authController();
+          break;
+        case "2":
+          Auth.signUp();
+          break;
+        case "3":
+          sc.close();
+          isQuit = true;
+          System.out.print("Quit. Thanks for using the Bank.");
+          break;
+        default:
+          System.out.println("This is invalid option. Quit.");
+      }
+    } while (!isQuit);
   }
 }
