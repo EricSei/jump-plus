@@ -10,6 +10,7 @@ import models.Account;
 import models.Customer;
 import services.DataBase;
 import services.Menu;
+import utility.Message;
 
 public class Auth {
 
@@ -21,12 +22,6 @@ public class Auth {
     Customer currentUser = null;
     try {
       List<Customer> list = DataBase.getCustomers();
-
-      // .stream()
-      // .filter(user -> user.getEmail().equals(userEmail) &&
-      // user.getPassword().equals(password))
-      // .collect(Collectors.toList());
-
       Scanner sc = new Scanner(System.in);
       System.out.print("Enter Your Email: ");
       String userEmail = sc.nextLine();
@@ -50,38 +45,39 @@ public class Auth {
       Account account = new Account(currentUser);
 
       Scanner sc2 = new Scanner(System.in);
-      System.out.print("Select An Option by choosing a number:");
-
+      System.out.print("Select An Option by choosing a number: ");
       String expression = sc2.nextLine();
       switch (expression) {
         case "1":
-          System.out.println("Depositing ...");
+          Message.warn("Depositing ...");
           account.deposit();
           break;
         case "2":
-          System.out.println("WithDrawing ...");
+          Message.warn("WithDrawing ...");
           account.withdraw();
           break;
         case "3":
-          System.out.print("Transferrring ...");
+          Message.warn("Transferrring ...");
           account.transfer();
           break;
         case "4":
-          sc2.close();
+          Message.warn("Loading Transactions ...");
+          account.loadTransactionsHistory();
+          break;
+        case "5":
           isLoggedIn = false;
-          System.out.println(" You have been logged Out. Thanks for using the Bank.");
+          Message.warn(" You have been logged Out.");
           break;
         default:
-          System.out.println("This is invalid option. Quit.");
+          Message.error("This is invalid option. Quit.");
       }
     } while (Auth.isLoggedIn);
   }
 
   public static Customer authUser(String userEmail, String password, List<Customer> list) {
     List<Customer> authUserList = list.stream()
-        .filter(user -> user.getEmail().equals(userEmail))
+        .filter(user -> user.getEmail().equals(userEmail) && user.getPassword().equals(password))
         .collect(Collectors.toList());
-    // && user.getPassword().equals(password)
     if (authUserList.size() > 0) {
       System.out.println("Found User");
       return authUserList.get(0);

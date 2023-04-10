@@ -1,28 +1,17 @@
 import java.util.Scanner;
 import controllers.Auth;
-import services.DataBase;
 import services.Menu;
+import utility.Message;
 
 public class DollarsBankApplication {
   public static void main(String[] args) throws Exception {
-
-    System.out.println("Welcom From Bank.");
-
-    DataBase bankDatabase = new DataBase();
-    // bankDatabase.writeCustomer();
-
-    // DataBase.loadCustomers();
-
-    // DataBase.writeTransaction();
-
-    // DataBase.writeTransaction("eric@gmail.com");
-
+    Message.message("--- Welcome From Bank. ---");
     boolean isQuit = false;
     do {
       Menu.mainDisplay();
       Scanner sc = new Scanner(System.in);
-      System.out.print("Select An Option by choosing a number: ");
-      String expression = sc.nextLine(); // 1: login, 2: Sign Up, 3: Menu, 4: Quit
+      Message.message("Select An Option by choosing a number: ");
+      String expression = sc.nextLine();
       switch (expression) {
         case "1":
           Auth.authController();
@@ -33,10 +22,10 @@ public class DollarsBankApplication {
         case "3":
           sc.close();
           isQuit = true;
-          System.out.print("Quit. Thanks for using the Bank.");
+          Message.message("Quit. Thanks for using the Bank.");
           break;
         default:
-          System.out.println("This is invalid option. Quit.");
+          Message.error("This is invalid option. Pick 1, 2, 3.");
       }
     } while (!isQuit);
   }

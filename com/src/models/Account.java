@@ -1,15 +1,14 @@
 package models;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import javax.xml.crypto.Data;
 
 import services.DataBase;
+import utility.Message;
 
-// Each user will be able to:
-// ○ Deposit money
-// ○ Withdraw money
-// ○ Transfer Funds
-// ○ View 5 of the most recent transactions in their history
-// ○ Display customer information
 public class Account {
     private Customer currentUser;
 
@@ -55,15 +54,63 @@ public class Account {
     }
 
     public boolean transfer() {
-        String receiverEmail = "";
-        // grab receiver
+        Scanner sc = new Scanner(System.in);
+        Message.message("Enter Receiver Email:");
+        String receiverEmail = sc.nextLine();
 
-        // deposit into receiver
+        Message.message("Enter Transferring Amount:");
+        String amountStr = sc.nextLine();
+        int amount = Integer.parseInt(amountStr);
 
+        String senderEmail = this.currentUser.getEmail();
+        // udpate sender
+        int totolBalance = Integer.parseInt(this.currentUser.getBalance()) - amount;
+        this.currentUser.setBalance(Integer.toString(totolBalance));
+        DataBase.setCustomers(currentUser);
+        try {
+            List<Customer> receiverList = DataBase.getCustomers().stream()
+                    .filter(user -> user.getEmail().equals(receiverEmail))
+                    .collect(Collectors.toList());
+
+            // update receiver
+
+            // && user.getPassword().equals(password)
+            if (receiverList.size() > 0) {
+                Message.message("Found Receiver");
+                Customer receiver = receiverList.get(0);
+                // deposit into receiver
+                receiver.setBalance(Integer.toString(Integer.parseInt(receiver.getBalance()) + amount));
+                DataBase.setCustomers(receiver);
+            } else {
+                Message.error("User Not found");
+                currentUser = null;
+                return false;
+            }
+        } catch (Exception e) {
+            Message.error("error out with" + e);
+        }
         // update transaction
-
-        System.out.print("Successfully Tranferred.");
+        try {
+            Transaction tranc = new Transaction(1, senderEmail, receiverEmail, "TANSFER",
+                    Integer.toString(amount));
+            DataBase.writeTransaction(tranc);
+        } catch (Exception e) {
+            Message.error("error out with" + e);
+        }
+        Message.message("Successfully Tranferred.");
         return true;
     }
 
+    public void loadTransactionsHistory() {
+        Message.message(" Loading Transaction History.");
+        try {
+            List<Transaction> list = DataBase.loadUserTransactions(this.getCurrentUser());
+            for (Transaction ts : list) {
+                Message.message(ts.toString());
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
 }
