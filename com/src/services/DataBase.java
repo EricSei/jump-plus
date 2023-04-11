@@ -38,7 +38,6 @@ public class DataBase {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    System.out.println(" -- -- -- -- -- ");
   }
 
   public static List<Customer> getCustomers() throws Exception {
@@ -190,7 +189,6 @@ public class DataBase {
   }
 
   public static void writeTransaction(Transaction tranc) throws Exception {
-    // String id = Integer.toString(Transaction.id);
     try {
       Message.message("Creating Transaction Id ... ");
       Random rand = new Random();

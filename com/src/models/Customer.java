@@ -63,9 +63,8 @@ public class Customer {
         this.balance = balance;
     }
 
-    public void display() {
-        System.out.println(
-                "email : " + this.email + " , first name : " + this.firstName + " , last name : " + this.lastName
-                        + " , balance : " + this.balance + " , password : " + this.password);
+    public String toString() {
+        return "email : " + this.email + " , first name : " + this.firstName + " , last name : " + this.lastName
+                + " , balance : " + this.balance + " , password : " + this.password;
     }
 }

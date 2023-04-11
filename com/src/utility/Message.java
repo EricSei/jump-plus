@@ -31,8 +31,6 @@ public class Message {
     }
 
     public static void title(String message) {
-        System.out.println(ANSI_TITLE
-                + message
-                + ANSI_RESET);
+        System.out.println(ANSI_TITLE + "|" + message + "|" + ANSI_RESET);
     }
 }

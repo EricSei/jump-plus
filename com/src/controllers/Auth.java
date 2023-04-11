@@ -29,7 +29,7 @@ public class Auth {
       String password = sc.nextLine();
 
       currentUser = Auth.authUser(userEmail, password, list);
-      currentUser.display();
+      Message.message(currentUser.getFirstName() + currentUser.getLastName() + "is logged in");
 
       if (currentUser.getEmail() == null) {
         System.out.println(" Please Create New Account.");
@@ -61,10 +61,15 @@ public class Auth {
           account.transfer();
           break;
         case "4":
-          Message.warn("Loading Transactions ...");
+          Message.warn("View Transactions ...");
           account.loadTransactionsHistory();
           break;
         case "5":
+          Message.warn("View All Your Information");
+          account.viewAccount();
+          break;
+        case "6":
+          Message.warn("View Transactions ...");
           isLoggedIn = false;
           Message.warn(" You have been logged Out.");
           break;
@@ -107,7 +112,7 @@ public class Auth {
       FileWriter csvWriter = new FileWriter("/Users/ericsei/projects/jump-plus/com/data/customers.csv", true);
       csvWriter.append(String.join(",", rowData));
       csvWriter.append("\n");
-      sc.close();
+      // sc.close();
       csvWriter.flush();
       csvWriter.close();
     } catch (Exception e) {

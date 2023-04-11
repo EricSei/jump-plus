@@ -11,7 +11,8 @@ public class Menu {
 
     public static void userActionsDisplay() {
         Message.title("- - - - - - - - - - - - - - ");
-        Message.title("1 : Deposit \n2: Withdraw \n3 : Transfer \n4 : View Balance  \n5 : Logged out");
+        Message.title(
+                "1 : Deposit \n2 : Withdraw \n3 : Transfer \n4 : View Transaction \n5 : View All Your Information  \n6 : Logged out");
         Message.title("- - - - - - - - - - - - - - ");
     }
 }

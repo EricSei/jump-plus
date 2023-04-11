@@ -5,7 +5,7 @@ import utility.Message;
 
 public class DollarsBankApplication {
   public static void main(String[] args) throws Exception {
-    Message.message("--- Welcome From Bank. ---");
+    Message.title("--- Welcome From Bank ---");
     boolean isQuit = false;
     do {
       Menu.mainDisplay();

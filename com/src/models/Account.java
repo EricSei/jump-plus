@@ -113,4 +113,9 @@ public class Account {
             // TODO: handle exception
         }
     }
+
+    public void viewAccount() {
+        Message.title("View Account");
+        Message.message(this.getCurrentUser().toString());
+    }
 }
