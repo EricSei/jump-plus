@@ -2,6 +2,7 @@ package com.cognixia.jump.controller;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import com.cognixia.jump.dao.AuthDAO;
 import com.cognixia.jump.dao.UserDAO;
@@ -100,6 +101,12 @@ public class AuthController {
 			name = sc.nextLine();
 			System.out.println("Enter Eamil: ");
 			email = sc.nextLine();
+			
+			boolean isEmailValid = patternMatches(email, "^(.+)@(\\S+)$");
+			if(! isEmailValid) {
+				Message.error("Email is invalid.");
+				return null;
+			}
 			System.out.println("Enter Password: ");
 			password = sc.nextLine();
 			
@@ -144,6 +151,12 @@ public class AuthController {
 				System.out.print(e);
 				return null;
 			}
+		}
+		
+		public static boolean patternMatches(String emailAddress, String regexPattern) {
+		    return Pattern.compile(regexPattern)
+		      .matcher(emailAddress)
+		      .matches();
 		}
 	
 }
