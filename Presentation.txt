@@ -1,0 +1,22 @@
+1. Design
+    - Entity Design
+        Customer, Transcation, Account 
+    - Authentication System
+        - User Name, Password
+    - Database
+        - File, SVC  
+2. Code Strcture, MVC Design 
+    Model, Controller, View, Services 
+3. Demonstrate
+    - all feature on Menu
+
+4. Challenge
+    - using svc text files
+        -Challenge to maitain the data consitency
+    - has not used Java for 1 year
+        - need to review everything
+5. Improvements
+ - code refactoring
+    - move Accout methods from controller
+    - View Should control Message.View 
+    - applied more OOP pattern like Interface 

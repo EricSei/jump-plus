@@ -13,13 +13,8 @@
 # Entites
 - Customer, Account, Transaction
 - Transaction
-    - Transaction1: sender, receiver, amount, action ( TRANSFERED )
-- costomerFiles
-    - email1, email2, email3
-- AccountFiles
-    -    email1 , password
-- TransactionFiles
-    - email1 - transaction1, transaction2 , 
+    - TransactionId, sender, receiver, amount, action ( TRANSFERRED ) 
+
 
 
 - if User exist , allow transactions 
