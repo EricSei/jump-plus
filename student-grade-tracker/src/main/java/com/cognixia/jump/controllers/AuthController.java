@@ -2,7 +2,6 @@ package com.cognixia.jump.controllers;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
-
 import com.cognixia.jump.dao.TeacherDAO;
 import com.cognixia.jump.model.Teacher;
 import com.cognixia.jump.service.Menu;
@@ -28,6 +27,8 @@ public class AuthController {
 		
 		Teacher currentUser = null;
 	    AuthController authCrtl = null;
+	    TeacherController teacherController = null;
+	    
 	    try {
 	     
 	      authCrtl = new AuthController();
@@ -39,6 +40,7 @@ public class AuthController {
 	        System.out.println("User Account May Not Exist. Please Create New Account.");
 	        return;
 	      }
+	      teacherController = new TeacherController(currentUser);
 	      authCrtl.setLoggedIn(true);
 	      Message.message(currentUser.getEmail() + " is logged in");
 	    } catch (Exception e) {
@@ -52,32 +54,36 @@ public class AuthController {
 	      String expression = sc2.nextLine();
 	      switch (expression) {
 	        case "1":
-	          Message.warn("Create A Class...");
-	         
-	          break;
+	        	Message.warn("Create A Class...");
+	        	break;
 	        case "2":
-	          Message.warn("View A Class...");
+	        	Message.warn("View A Class...");
+	        	teacherController.selectClass();
 	          break;
 	        case "3":
-	          Message.warn("List All Your Classes...");
+	        	Message.warn("List All Your Classes...");
+	        	teacherController.viewClasses();
+	          break;
 	        case "4":
-		          Message.warn("Find Average and Median for a class...");
+	        	Message.warn("Find Average and Median for a class...");
+	        	break;    
 	        case "5":
-		          Message.warn("Sort Classes By Names...");
+	        	Message.warn("Sort Classes By Names...");
+	        	break;
 	        case "6":
-		          Message.warn("Sort Classes By Grade...");
-	          break;
+	        	Message.warn("Sort Classes By Grade...");
+	        	break;
 	        case "7":
-		          Message.warn("Update A Grade...");
+	        	Message.warn("Update A Grade...");
 	        case "8":
-	          Message.warn("Logging Out ...");
-	          authCrtl.isLoggedIn = false;
-	          Message.warn(" You have been logged Out.");
-	          break;
+	        	Message.warn("Logging Out ...");
+	        	authCrtl.isLoggedIn = false;
+        	Message.warn(" You have been logged Out.");
+        		break;
 	        default:
 	          Message.error("This is invalid option. Quit.");
 	      }
-	      System.out.println("isLoggedIn is " + authCrtl.isLoggedIn);
+	 
 	    } while (authCrtl.isLoggedIn);    
 	  }
 	

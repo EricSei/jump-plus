@@ -48,42 +48,7 @@ public class Main {
 		    } while (!isQuit);
 		  
 		
-//		Student stu1 = new Student(0, "zawzaw", "zawzaw@gmail.com", "zawzaw@123", "student");
-//		System.out.print(stu1.toString());
-//		new StudentDAO().createStudent(stu1);
-		
-		Teacher tea1 = new Teacher(0, "Rosemary", "rosemary@gmail.com", "rosemary@1234", "teacher");
-//		
-//		new TeacherDAO().createTeacher(tea1);
-		
-		//login test
-//		new TeacherDAO().login(tea1).toString();
-		
-//		new TeacherDAO().getSchoolClasses(1).forEach( x -> System.out.println( x.toString() ) );
-			
-	
-		
-//		SchoolClass myClass = new SchoolClass(0, "ESL 100", 6);
-//		new SchoolClassDAO().createSchoolClass(myClass);
-		
-//		new EnrollementDAO().createEnrollement( new Enrollement(0, 2, 2, "A", "N", "B" ));
-		
-		
-		// remove enrollement
-//		Enrollement toRemoveEnroll = new Enrollement();
-//		toRemoveEnroll.setStudentId(2);
-//		toRemoveEnroll.setClassId(1);
-//		new EnrollementDAO().removeEnrollement(toRemoveEnroll);
-		
-		//udpate a grade
-//		Enrollement toRemoveEnroll = new Enrollement();
-//		toRemoveEnroll.setStudentId(3);
-//		toRemoveEnroll.setClassId(1);
-//		
-//		new EnrollementDAO().updateEnrollement(toRemoveEnroll, "grade3", 35 );
-		
-//		double average = new EnrollementDAO().getAverageGradeByClass(2);
-//		System.out.println(average);
+
 		
 	}
 

@@ -25,13 +25,7 @@ public class SchoolClassDAO {
 			e.printStackTrace();
 		}
 		
-		
 		return result > 0;
 	}
-	
-	
-	
-	
-	
 	
 }
