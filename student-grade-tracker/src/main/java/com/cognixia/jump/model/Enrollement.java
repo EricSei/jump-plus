@@ -5,9 +5,9 @@ public class Enrollement {
 	private int id;
 	private int classId;
 	private int studentId;
-	private String grade1;
-	private String grade2;
-	private String grade3;
+	private double grade1;
+	private double grade2;
+	private double grade3;
 	
 	
 	public Enrollement() {
@@ -16,7 +16,7 @@ public class Enrollement {
 	}
 
 
-	public Enrollement(int id, int classId, int studentId, String grade1, String grade2, String grade3) {
+	public Enrollement(int id, int classId, int studentId, double grade1, double grade2, double grade3) {
 		super();
 		this.id = id;
 		this.classId = classId;
@@ -52,37 +52,37 @@ public class Enrollement {
 	}
 
 
-	public void setStudentId(int student) {
-		this.studentId = student;
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
 	}
 
 
-	public String getGrade1() {
+	public double getGrade1() {
 		return grade1;
 	}
 
 
-	public void setGrade1(String grade1) {
+	public void setGrade1(double grade1) {
 		this.grade1 = grade1;
 	}
 
 
-	public String getGrade2() {
+	public double getGrade2() {
 		return grade2;
 	}
 
 
-	public void setGrade2(String grade2) {
+	public void setGrade2(double grade2) {
 		this.grade2 = grade2;
 	}
 
 
-	public String getGrade3() {
+	public double getGrade3() {
 		return grade3;
 	}
 
 
-	public void setGrade3(String grade3) {
+	public void setGrade3(double grade3) {
 		this.grade3 = grade3;
 	}
 
@@ -93,8 +93,6 @@ public class Enrollement {
 				+ ", grade2=" + grade2 + ", grade3=" + grade3 + "]";
 	}
 
-	
-	
 	
 	
 }

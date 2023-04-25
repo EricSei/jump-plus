@@ -22,34 +22,30 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		 Message.title("Hello from Class Grader");
-		 	AuthController auth = new AuthController();
-		    boolean isQuit = false;
-		    do {
-		      Menu.mainDisplay();
-		      Scanner sc = new Scanner(System.in);
-		      Message.message("Select An Option by choosing a number: ");
-		      String expression = sc.nextLine();
-		      switch (expression) {
-		        case "1":
-		          auth.authController();
-		          break;
-		        case "2":
-		          auth.createTeacher();
-		          break;
-		        case "3":
-		          sc.close();
-		          isQuit = true;
-		          Message.message("Quit. Thanks for using Movie Ratings. Bye.");
-		          break;
-		        default:
-		          Message.error("This is invalid option. Pick 1, 2, 3.");
-		      }
-		    } while (!isQuit);
-		  
-		
-
-		
+	 Message.title("Hello from Class Grader");
+	 	AuthController auth = new AuthController();
+	    boolean isQuit = false;
+	    do {
+	      Menu.mainDisplay();
+	      Scanner sc = new Scanner(System.in);
+	      Message.message("Select An Option by choosing a number: ");
+	      String expression = sc.nextLine();
+	      switch (expression) {
+	        case "1":
+	          auth.authController();
+	          break;
+	        case "2":
+	          auth.createTeacher();
+	          break;
+	        case "3":
+	          sc.close();
+	          isQuit = true;
+	          Message.message("Quit. Thanks for Grade Book. Bye.");
+	          break;
+	        default:
+	          Message.error("This is invalid option. Pick 1, 2, 3.");
+	      }
+	    } while (!isQuit);
 	}
 
 }

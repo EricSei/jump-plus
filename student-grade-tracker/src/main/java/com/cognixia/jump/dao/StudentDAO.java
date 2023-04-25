@@ -30,8 +30,6 @@ public class StudentDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		
-		
 		return result > 0;
 	}
 	
@@ -49,7 +47,6 @@ public class StudentDAO {
 			pstmt = conn.prepareStatement(queryStr);
 			pstmt.setInt(1, schoolClassId);
 			rs = pstmt.executeQuery();
-			
 			return rs;
 		}catch(SQLException e){
 			e.printStackTrace();

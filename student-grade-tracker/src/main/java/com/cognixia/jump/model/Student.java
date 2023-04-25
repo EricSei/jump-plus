@@ -7,6 +7,11 @@ public class Student {
 	private String email;
 	private String password;
 	private String role;
+	private double grade;
+	
+	public Student() {
+		
+	}
 	public Student(int id, String name, String email, String password, String role) {
 		super();
 		this.id = id;
@@ -14,6 +19,13 @@ public class Student {
 		this.email = email;
 		this.password = password;
 		this.role = role;
+	}
+	
+	public double getGrade() {
+		return Math.ceil(grade);
+	}
+	public void setGrade(double grade) {
+		this.grade = grade;
 	}
 	public int getId() {
 		return id;

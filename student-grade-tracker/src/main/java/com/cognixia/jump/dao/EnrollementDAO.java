@@ -26,9 +26,9 @@ public class EnrollementDAO {
 			pstmt.setInt(2, enroll.getClassId());
 			pstmt.setInt(3, enroll.getStudentId() );
 			
-			pstmt.setString(4, enroll.getGrade1());
-			pstmt.setString(5, enroll.getGrade2());
-			pstmt.setString(6, enroll.getGrade3());
+			pstmt.setInt(4, (int) enroll.getGrade1());
+			pstmt.setInt(5, (int) enroll.getGrade2());
+			pstmt.setInt(6, (int) enroll.getGrade3());
 			
 			result = pstmt.executeUpdate();
 		}catch(SQLException e){

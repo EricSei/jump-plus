@@ -11,6 +11,9 @@ public class AuthController {
 	private Teacher authUser = null;
 	private boolean isLoggedIn = false;
 	
+	private int classIdPicked = 0;
+	private int studentIdPicked = 0;
+	
 	public AuthController() {
 		this.authUser = null;
 	}
@@ -22,17 +25,17 @@ public class AuthController {
 	public void setLoggedIn(boolean isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
 	}
-
+	
 	public void authController() {
 		
 		Teacher currentUser = null;
 	    AuthController authCrtl = null;
 	    TeacherController teacherController = null;
 	    
+	    
 	    try {
 	     
 	      authCrtl = new AuthController();
-	      //Get Auth User
 	      currentUser = authCrtl.login();
 	      
 	      // User does not Return , validate More
@@ -46,36 +49,27 @@ public class AuthController {
 	    } catch (Exception e) {
 	      System.out.print("Error out with " + e);
 	    }
+	    
+	  
+	   
 
 	    do {
+    	  Message.warn(" --- All Your Classes ---");
+    	  teacherController.viewClasses();
 	      Menu.classActionsDisplay();;
 	      Scanner sc2 = new Scanner(System.in);
 	      Message.message("Select An Option by choosing a number: ");
 	      String expression = sc2.nextLine();
 	      switch (expression) {
 	        case "1":
-	        	Message.warn("Create A Class...");
+	        	Message.warn("--- Create A Class --- ");
+	        	teacherController.createClass();
 	        	break;
 	        case "2":
-	        	Message.warn("View A Class...");
-	        	teacherController.selectClass();
+	        	Message.warn(" --- View A Class --- "); // display students with a clas, Message.warn("Find Average and Median for a class");
+	        	classIdPicked = teacherController.selectClass();
 	          break;
-	        case "3":
-	        	Message.warn("List All Your Classes...");
-	        	teacherController.viewClasses();
-	          break;
-	        case "4":
-	        	Message.warn("Find Average and Median for a class...");
-	        	break;    
-	        case "5":
-	        	Message.warn("Sort Classes By Names...");
-	        	break;
-	        case "6":
-	        	Message.warn("Sort Classes By Grade...");
-	        	break;
-	        case "7":
-	        	Message.warn("Update A Grade...");
-	        case "8":
+	        case "0":
 	        	Message.warn("Logging Out ...");
 	        	authCrtl.isLoggedIn = false;
         	Message.warn(" You have been logged Out.");
@@ -83,11 +77,52 @@ public class AuthController {
 	        default:
 	          Message.error("This is invalid option. Quit.");
 	      }
+	      
+	      
+	      do {
+		      Menu.studentsByClassActions(); //students actions display
+		      Scanner sc3 = new Scanner(System.in);
+		      Message.message("Select An Option by choosing a number: ");
+		      String expression3 = sc3.nextLine();
+		      switch (expression3) {   
+		        case "1":
+		        	Message.warn(" --- Sort Stduents By Names --- ");
+		        	teacherController.sortClassByNames(classIdPicked);
+		        	break;
+		        case "2":
+		        	Message.warn(" --- Sort Students By Grade --- ");
+		        	teacherController.sortClassByGrades(classIdPicked);
+		        	break;
+		        case "3":
+		        	Message.warn("  --- Update A Grade ----  ");
+		        	teacherController.udpateGrade(classIdPicked);
+		        	break;
+		        case "4":
+		        	Message.warn(" --- Remove A Student from the class ---- ");
+		        	teacherController.removeStudent(classIdPicked);
+		        	break;
+		        case "5":
+		        	Message.warn("--- Add a Student to the class ---- ");
+		        	teacherController.addStudent(classIdPicked);
+		        	break;
+		        case "6":
+		        	Message.warn(" --- Go Back to View Classes ---- ");
+		        	classIdPicked = 0;
+		        	break;
+		        case "0":
+		        	Message.warn(" --- Logging Out --- ");
+		        	authCrtl.isLoggedIn = false;
+		        	Message.warn(" You have been logged Out.");
+	        		break;
+		        default:
+		          Message.error("This is invalid option. Quit.");
+		      }
+		 
+		    } while (authCrtl.isLoggedIn &&  classIdPicked > 0);    
+	
 	 
-	    } while (authCrtl.isLoggedIn);    
-	  }
-	
-	
+	    } while (authCrtl.isLoggedIn &&  classIdPicked == 0);    
+	}
 	
 	public Teacher createTeacher() {
 		
