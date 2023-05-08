@@ -1,5 +1,8 @@
 # jump-plus
 
+# Project Links
+- Team Project https://github.com/michab17/TVShowProgressTracker
+
 ## Requirements:
  - Each user will be able to:
  - Deposit money
