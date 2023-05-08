@@ -1,7 +1,13 @@
 # jump-plus
 
 # Project Links
-- Team Project https://github.com/michab17/TVShowProgressTracker
+- Project 1: [ Dollar Bank ] (jump-plus/tree/main/com)
+
+- Project 2: [ Airline ]  (https://github.com/EricSei/jump-plus/tree/main/airline)
+
+- Project 3: [ Movie Rating ] ( https://github.com/EricSei/jump-plus/tree/main/movie-ratings )
+- Project 4: (Student Grade Tracker) ( https://github.com/EricSei/jump-plus/tree/main/student-grade-tracker )
+- Project 5: Team Project https://github.com/michab17/TVShowProgressTracker
 
 ## Requirements:
  - Each user will be able to:
