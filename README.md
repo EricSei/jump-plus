@@ -1,6 +1,9 @@
-# jump-plus
+# Jump Plus
 
-# Project Links
+- The Colletion of projects that demonstrate the application of Core Java, Object Oriented Programming, JDBC and MYSQL
+- To learn more about each application and demo, click on a project's link
+
+# Project Links 2023 
 | Projects | Description |
 | --- | --- |
 | Project 1: [ Dollar Bank ](/banking) | Dollar Bank |
