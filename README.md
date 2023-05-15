@@ -1,6 +1,7 @@
 # Jump Plus
 
 - The Colletion of projects that demonstrate the application of Core Java, Object Oriented Programming, JDBC and MYSQL
+- Utilze Vanilla JavaScript, HTML, CSS
 - To learn more about each application and demo, click on a project's link
 
 # Project Links 2023 
