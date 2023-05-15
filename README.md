@@ -11,6 +11,7 @@
 | Project 3: [ Movie Rating ](/movie-ratings ) | Movie Ratings |
 | Project 4: [ Student Grade Tracker ](/student-grade-tracker) | Student Grade Tracker |
 | Project 5: [ TV Show Progress Tracker ](/TVShowProgressTracker) | TVShowProgressTracker |
+| Project 6: [ Dollar Bank ](https://github.com/EricSei/dollarbanks) | Dollar Bank using Vanilla using JavaScript, HTML, CSS |
 
 # Learn how to run Java in VS Code
 https://code.visualstudio.com/docs/java/java-tutorial
