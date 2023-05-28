@@ -1,0 +1,40 @@
+User
+- id 
+- email
+- password
+- name 
+- role (super, admin, user ) 
+
+
+Product
+- id 
+- name 
+- description 
+- price 
+
+Cart
+- has many products
+- cardId : userId
+- 
+
+
+Order( transactions )  
+- productId
+- quantity 
+- date 
+- discountApplied : % 
+- totalPrice 
+
+Bonus
+=========
+Admin 
+
+Search
+
+Redux
+
+=======
+pages
+
+Landing Page  with Search Bar 
+
