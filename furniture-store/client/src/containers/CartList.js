@@ -117,7 +117,7 @@ const CartList = (props) => {
             <Card.Group centered>
               <Card color='red'>
                 <Card.Content>
-                  <Card.Header color='blue' > Total Cost : {getTotalCost(productsOfCart)}</Card.Header>
+                  <Card.Header color='blue' > Total Cost $ : {getTotalCost(productsOfCart)}</Card.Header>
                   {
                     getTotalCost(productsOfCart) > 2000 ?
                       <Card.Header> After Disconted Cost : {getDiscount(getTotalCost(productsOfCart))} </Card.Header>
