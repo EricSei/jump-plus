@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import ProductCompnent from './ProductComponent';
+import ProductComponent from './ProductComponent';
 import axios from 'axios';
 import { setProducts } from '../redux/actions/productActions';
-import UserComponent from './UserComponent';
+import MenuComponent from './Menu';
+import { Grid, Image } from 'semantic-ui-react'
+
+
 
 const ProductListing = () => {
 
@@ -12,7 +15,7 @@ const ProductListing = () => {
 
   const fetchProducts = async () => {
     try {
-      let response = await axios('https://fakestoreapi.com/products')
+      let response = await axios('http://localhost:3004/products')
       console.log(response.data)
 
       //action , 
@@ -36,10 +39,15 @@ const ProductListing = () => {
   }, [])
 
   return (
-    <div className='ui grid container'>
-      <ProductCompnent />
-      <UserComponent />
-    </div>
+    <>
+      <MenuComponent />
+      <Grid columns={3}>
+        <Grid.Row  >
+          <ProductComponent />
+        </Grid.Row>
+      </Grid>
+    </>
+
   )
 }
 
