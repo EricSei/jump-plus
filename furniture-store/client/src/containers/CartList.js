@@ -2,44 +2,44 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { getCard } from '../redux/actions/cartActions';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory } from 'react-router-dom';
 import { Grid, Image, Card, Button } from 'semantic-ui-react'
 import MenuComponent from './Menu';
+import { withRouter } from 'react-router';
 
 const CartList = (props) => {
-
-  const cart = useSelector((state) => state.cart.cart) // ? 
+  const history = useHistory();
+  const cart = useSelector((state) => state.cart.cart)
   const user = useSelector(state => state.user.user)
-  console.log(cart)
-
   let { id, userId, productsOfCart } = cart;
   const dispatch = useDispatch();
   console.log(productsOfCart)
-  let totalCost = 0;
+
   const fetchCart = async (userId) => {
     try {
       let response = await axios.get(`http://localhost:3004/carts?userId=${userId}`)
       console.log(response.data)
       let { id, productsOfCart } = response.data[0];
-      //action , 
-      // products pass in actions , return Object
-      // Object is taken by Reducer : {type , payload}
-      // then pass new state 
-
       dispatch(getCard(response.data[0]))
-      /**
-       * dispatch an action which carry new state /payload from the server and update the store
-       */
-      // return response.data;
     } catch (error) {
       console.log(error)
     }
   }
 
-  useEffect(() => {
-    fetchCart(user.id)
-    totalCost = getTotalCost(productsOfCart)
-  }, [totalCost])
+  const removeCart = async (removeCardId) => {
+    let updateProductCart = {
+      "userId": userId,
+      productsOfCart: [],
+    }
+    try {
+      let response = await axios.put(`http://localhost:3004/carts/${removeCardId}`, updateProductCart)
+      console.log(response.data)
+      let { id, productsOfCart } = response.data[0];
+      // dispatch(getCard(response.data[0]))
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const getTotalCost = (products) => {
     let decimalCost = products.reduce((acc, x) => { return acc + (x.price * x.quantity) }, 0);
@@ -51,6 +51,24 @@ const CartList = (props) => {
     let decimalCost = cost > 2000 ? cost * 0.9 : cost;
     let formattedCost = Math.round(decimalCost * 100) / 100
     return formattedCost;
+  }
+
+  const handleSubmitOrder = async (event) => {
+    event.preventDefault();
+    let order = {
+      "userId": userId,
+      products: [...productsOfCart],
+      "total": getDiscount(getTotalCost(productsOfCart))
+    }
+    try {
+      let response = await axios.post(`http://localhost:3004/orders`, order)
+      console.log(response.data)
+      // dispatch(signUpUser(response.data))
+      removeCart(id)
+      history.push("/orders");
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   const renderList = (products) => {
@@ -85,6 +103,11 @@ const CartList = (props) => {
     })
   }
 
+  useEffect(() => {
+    fetchCart(user.id)
+    // totalCost = getTotalCost(productsOfCart)
+  }, [])
+
   return (
     <>
       <MenuComponent />
@@ -93,7 +116,6 @@ const CartList = (props) => {
           <>
             <Card.Group centered>
               <Card color='red'>
-
                 <Card.Content>
                   <Card.Header color='blue' > Total Cost : {getTotalCost(productsOfCart)}</Card.Header>
                   {
@@ -102,7 +124,7 @@ const CartList = (props) => {
                       : <Card.Header> Spend $ 2000 and get 10 % discount ! </Card.Header>
                   }
                 </Card.Content>
-                <Button size="big"> Place Order </Button>
+                <Button onClick={handleSubmitOrder} size="big"> Place Order </Button>
               </Card>
             </Card.Group>
 
@@ -125,4 +147,4 @@ const CartList = (props) => {
   )
 }
 
-export default CartList;
+export default withRouter(CartList);

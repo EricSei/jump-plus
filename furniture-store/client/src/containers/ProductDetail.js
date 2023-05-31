@@ -35,10 +35,7 @@ const ProductDetail = () => {
 
   const handleAddCard = async (event) => {
     event.preventDefault();
-
-
     try {
-
       let toAddProducts = productsOfCart.map(x => x);
       let newProduct = {
         "id": pdId,
@@ -71,18 +68,10 @@ const ProductDetail = () => {
     }
   }, [productId])
 
-  // return (
-  //   product && <div className="ui grid container">
-  //     Hello
-  //     {title} , {price}
-  //   </div>
-  // )
   return (
     <>
       <MenuComponent />
-
       <div className="ui grid container">
-
         {Object.keys(product).length === 0 ? (
           <div>...Loading</div>
         ) : (
@@ -107,13 +96,6 @@ const ProductDetail = () => {
                     <i className="shop icon"></i>
                     Add to Cart
                   </Button>
-                  {/* <div className="ui vertical animated button" tabIndex="0">
-                    <div className="hidden content">
-                      
-                    </div>
-
-                    <div onClick={handleClick} className="visible content">Add to Cart</div>
-                  </div> */}
                 </div>
               </div>
             </div>

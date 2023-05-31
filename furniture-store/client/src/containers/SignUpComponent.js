@@ -30,7 +30,11 @@ const SignUpComponent = () => {
       toast.success(response.data.message);
       console.log(response.data)
       // dispatch(signUpUser(response.data))
-      history.push(`/users/user/${response.data.id}`);
+      let createCartResponse = await axios.post(`http://localhost:3004/carts`, {
+        "userId": response.data.id,
+        "productsOfCart": []
+      })
+      history.push(`/signin`);
     } catch (e) {
       console.error(e)
     }

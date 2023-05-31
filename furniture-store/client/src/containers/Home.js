@@ -7,7 +7,7 @@ const Home = () => {
   //display menu based off auth
   return <>
     {/* <Header /> */}
-    <MenuComponent />
+    {/* <MenuComponent /> */}
     <ProductListing />
     <div >
       Home

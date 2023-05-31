@@ -21,6 +21,15 @@ export const signInUser = (user) => {
   }
 }
 
+export const signOutUser = (user) => {
+  return {
+    type: ActionTypes.SIGN_OUT_USER,
+    payload: user
+  }
+}
+
+
+
 // export const setProducts = (products) => {
 //   return {
 //     type: ActionTypes.SET_PRODUCTS,

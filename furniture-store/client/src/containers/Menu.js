@@ -1,25 +1,31 @@
 import React, { Component } from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { Menu } from 'semantic-ui-react'
+import { signOutUser } from '../redux/actions/userActions';
 
 const MenuComponent = () => {
-
 
   let user = useSelector(state => state.user);
   let { id, email, name } = user.user
   const state = {}
-
+  const history = useHistory()
   console.log(user)
   const { activeItem } = true;
-
+  const dispatch = useDispatch();
   // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   const handleItemClick = () => {
 
   }
 
+  const handleSignOut = (event) => {
+    event.preventDefault();
+    dispatch(signOutUser({ user: {} }))
+    history.push('/')
+  }
+
   return (
-    id && email ? <>
+    user && id && email ? <>
       <Menu inverted>
         <Menu.Item
           name='editorials'
@@ -55,8 +61,9 @@ const MenuComponent = () => {
         <Menu.Item
           name='upcomingEvents'
           active={activeItem === 'upcomingEvents'}
-          onClick={handleItemClick}
+          onClick={handleSignOut}
         >
+          {/* <Link to={'/'}> Sign Out  </Link > */}
           Sign Out
         </Menu.Item>
 

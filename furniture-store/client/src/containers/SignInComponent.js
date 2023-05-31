@@ -52,8 +52,6 @@ const SignInComponent = () => {
 
   const signinForm = () => (
     <Form>
-
-
       <Form.Input
         onChange={handleChange("email")}
         value={email}
@@ -67,14 +65,12 @@ const SignInComponent = () => {
         type="password"
         placeholder="password"
       />
-
       <Button onClick={handleSignInSubmit}> Sign In  </Button>
     </Form>
   );
 
   return (
     <div className="ui container" style={{ marginTop: "10em" }}>
-      <ToastContainer />
       {signinForm()}
     </div>
   )
