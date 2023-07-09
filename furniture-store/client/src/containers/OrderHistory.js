@@ -52,6 +52,7 @@ const OrderHistory = () => {
         <List.Item>
           Quantity {quantity}
         </List.Item>
+
       </List>)
     })
   }
