@@ -13,7 +13,7 @@
 | Project 4: [ Student Grade Tracker ](/student-grade-tracker) | Student Grade Tracker |
 | Project 5: [ TV Show Progress Tracker ](https://github.com/EricSei/TVShowProgressTracker) | TVShowProgressTracker |
 | Project 6: [ Dollar Bank ](https://github.com/EricSei/dollarbanks) | Dollar Bank using Vanilla using JavaScript, HTML, CSS |
-| Project 7: [  ](https://github.com/EricSei/panther-workout-tracker) | FullStack App , Balack Panther Workout Tracker,  Team Project |
+| Project 7: [ Black Panther Workout Tracker ](https://github.com/EricSei/panther-workout-tracker) | FullStack App , Balack Panther Workout Tracker,  Team Project |
 | Project 8: [ Furniture Ecommerce APi ](https://github.com/EricSei/furniture-github-api) | Spring Boot API for Furniture Ecommerce |
 
 # Learn how to run Java in VS Code
